@@ -1,0 +1,24 @@
+{
+    "users":[
+        {
+            "id":1,
+            "name":"John Doe",
+            "available":true,
+            "age":25,
+            "email":"dungnguyenhd@gmail.com",
+            "phone":"0123456789",
+            "address":"Ha Noi"
+        
+        },
+     {
+        "id":2,
+        "name":"Nguyen Duc Dung",
+        "available":true,
+        "age":25,
+        "email":"dungnguyenhd@gmail.com",
+        "phone":"0123456789",
+        "address":"Ha Noi"
+    }
+     
+    ]
+}
