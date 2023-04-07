@@ -1,0 +1,10 @@
+.listEmployess {
+    .table-data {
+        border: 1px solid green;
+        min-height: 500px;
+        .options {
+            display: flex;
+            gap: 5px;
+        }
+    }
+}
