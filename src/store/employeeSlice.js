@@ -10,7 +10,6 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     return response.data;
 });
 
-
 //slice
 
 const initialState = {

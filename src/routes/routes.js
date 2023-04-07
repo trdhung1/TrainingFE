@@ -1,25 +1,34 @@
 
-import HomePage from '../pages/HomePage';
-import LoginPage from '../pages/LoginPage';
+import EmployeePage from '../pages/EmployeePage';
+import NotFound from '../pages/NotFound';
+import AuthPage from '../pages/AuthPage';
 
- export const publicRoutes = [
+export const routes = [
     {
         path: '/',
-        component: HomePage,
-        exact: true,
+        component: EmployeePage,
+        private: true,
     },
     {
-        path: '/login',
-        component: LoginPage,
-        exact: true,
-    }
+
+        path: '/employee',
+        component: EmployeePage,
+        private: true,
+    },
+    {
+        path: '/authentication',
+        component: AuthPage,
+        private: false,
+    },
+    {
+        path: '*',
+        component: NotFound,
+        private: false,
+    },
 ];
 
-export const privateRoutes = [
-    {
-        path: '/',
-        component: HomePage,
-        exact: true,
-        private : true,
-    }
-];
+
+
+
+
+

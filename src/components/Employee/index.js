@@ -15,7 +15,7 @@ function Employee () {
     <TableContainer component={Paper} className='max-w-[960px]'>
       <Table aria-label="employee table" >
         <TableHead>
-          <TableRow>
+          <TableRow className='bg-[#F6BD60]'>
             <TableCell className="font-bold text-gray-700 uppercase align-middle">ID</TableCell>
             <TableCell className="font-bold  text-gray-700 uppercase align-middle">Employee Name</TableCell>
             <TableCell className="font-bold text-gray-700 uppercase align-middle">Available</TableCell>
