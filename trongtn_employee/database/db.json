@@ -1,101 +1,22 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Bluth George",
-      "age": 25,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": true,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "name": "Bluth George",
-      "age": "30",
-      "phone": "0123456789",
-      "country": "England",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "name": "Bluth George",
+      "name": "Bluth George 5",
       "age": 28,
       "phone": "0123456789",
       "country": "England",
       "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "id": 4
     },
     {
       "id": 5,
-      "name": "Bluth George",
+      "name": "Bluth George 4",
       "age": 29,
       "phone": "0123456789",
       "country": "England",
       "isAvailable": false,
       "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 6,
-      "name": "Bluth George",
-      "age": 30,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 7,
-      "name": "Bluth George",
-      "age": 31,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 8,
-      "name": "Bluth George",
-      "age": 32,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 9,
-      "name": "Bluth George",
-      "age": 25,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 10,
-      "name": "Bluth George",
-      "age": 25,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "id": 11,
-      "name": "Bluth George",
-      "age": 26,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    },
-    {
-      "name": "Nguyen Van C",
-      "age": "25",
-      "phone": "123456789",
-      "country": "Vietnam",
-      "avatar": "",
-      "isAvailable": false,
-      "id": 12
     }
   ]
 }
