@@ -1,22 +1,37 @@
-
+// Login form
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { checkUserAndPassword } from '../../../store/authSlice'
+import { authenticateUser, loginWidthLocalstorage } from '../../../store/authSlice'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+
 import Loading from '../../Loading'
 
-function LoginForm() {
+function LoginForm () {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const  isLoading = useSelector((state) => state.auth.loading)
+  const error = useSelector(state => state.auth.error)
+  const isLoading = useSelector(state => state.auth.loading)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  // use promise all to loading
+  // const [isLoading, setLoading] = useState(false)
 
-  const handleOnSubmit = async(data) => {
-     await dispatch(checkUserAndPassword(data) )
-      navigate('/employee')
- 
+  const handleOnSubmit = async (data) => {
+    await dispatch(authenticateUser(data))
+    navigate('/employee')
   }
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('User'))
+    if (user) {
+      dispatch(loginWidthLocalstorage(user))
+    }
+  }, [dispatch, isAuthenticated])
+
+
+  
 
 
   return (
@@ -33,7 +48,7 @@ function LoginForm() {
           <input
             type='text'
             className={`w-full px-3 py-2 border border-[#AF87CE] rounded-lg text-[16px] focus:border-[#02C39A] ${errors.username ? 'border-red-500' : ''}`}
-         
+
             {...register('username', { required: true })}
           />
           {errors.username && <span className='text-red-500 text-[14px]'>Username is required</span>}
@@ -51,6 +66,8 @@ function LoginForm() {
           {errors.password && <span className='text-red-500 text-[14px]'>Password is required</span>}
         </div>
 
+        {error && <div className='text-red-500 text-[14px] mb-4 flex justify-end'>{error}</div>}
+
         <div className='buttons flex justify-end'>
           <button
             className='px-3 py-2 bg-[#02C39A] w-full text-white text-lg rounded-lg hover:bg-[#00A896] focus:outline-none focus:shado'
@@ -60,9 +77,9 @@ function LoginForm() {
           </button>
         </div>
       </form>
-      
-  
-      {isLoading && <Loading/>}
+
+
+      {isLoading && <Loading />}
     </div>
   )
 }

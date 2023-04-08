@@ -4,7 +4,6 @@ import 'react-tabs/style/react-tabs.css';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
-
 function AuthForm() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -19,14 +18,14 @@ function AuthForm() {
         <TabList className="flex w-[500px]">
           <Tab
             className={`${
-              activeTab === 0 ? 'bg-gray-300' : 'bg-white  hover:bg-gray-50'
+              activeTab === 0 ? ' bg-gray-200 border-b-2 border-blue-500' : 'bg-white hover:bg-gray-50'
             } text-gray-700 py-4 px-6 font-medium focus:outline-none flex-1`}
           >
             Sign In
           </Tab>
           <Tab
             className={`${
-              activeTab === 1 ? 'bg-gray-300' : 'bg-white  hover:bg-gray-50'
+              activeTab === 1 ? 'bg-gray-200 border-b-2 border-blue-500' : 'bg-white hover:bg-gray-50'
             } text-gray-700 py-4 px-6 font-medium focus:outline-none flex-1`}
           >
             Sign Up

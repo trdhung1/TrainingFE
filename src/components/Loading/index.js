@@ -1,13 +1,14 @@
-import ClipLoader from 'react-spinners/ClipLoader'
+import React from "react";
+import { PropagateLoader } from "react-spinners";
 
-function Loading() {
-    return ( 
-        <div className="
-            flex w-full h-screen justify-center items-center bg-black
-        ">
-            <ClipLoader color={'#fff'} loading={true} size={150} />
-            </div>
-     );
-}
+const Loading = () => {
+  return (
+    <div className="fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-70">
+      <div className="relative">
+      <PropagateLoader color="#02C39A" loading={true} size={15} />
+      </div>
+    </div>
+  );
+};
 
 export default Loading;

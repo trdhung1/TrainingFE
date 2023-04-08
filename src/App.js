@@ -1,24 +1,32 @@
 import {  routes } from './routes';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loginWidthLocalstorage } from './store/authSlice';
+import { useDispatch } from 'react-redux';
 
 function App () {
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
 
-  console.log('isAuthenticated', isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const storedUser = JSON.parse(localStorage.getItem('User'));
+
+  useEffect(() => {
+    if (storedUser && !isAuthenticated) {
+      dispatch(loginWidthLocalstorage(storedUser));
+    }
+  }, [dispatch, isAuthenticated, storedUser]);
+
+  
   return (
     <Router>
       <Routes>
-        {routes.map((route) => (
+        {routes.map((route, index) => (
           <Route
-            key={route.path}
+            key={index}
             path={route.path}
-            element={<route.component />}
-            {...(route.private && !isAuthenticated ? { element: <Navigate to="/authentication" /> } : {
-             
-                  
-            })}
+            element = {route.private && !isAuthenticated ? <Navigate to="/authentication" /> : <route.component />}
           />
         ))}
       </Routes>

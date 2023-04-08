@@ -1,7 +1,7 @@
+
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../../store/authSlice'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 function RegisterForm() {
@@ -12,14 +12,13 @@ function RegisterForm() {
   const { register, handleSubmit,  formState: { errors } } = useForm();
 
   const dispatch = useDispatch()
+  const { error, successMessage } = useSelector(state => state.auth)
 
   const handleOnSubmit = async(data) => {
-     await dispatch(registerUser({
+    await dispatch(registerUser({
       username: data.username,
       password: data.password,
     }))
-   
-   
   }
 
   return (
@@ -37,11 +36,17 @@ function RegisterForm() {
             type='text'
             className={`w-full px-3 py-2 border border-[#AF87CE] rounded-lg text-[16px] focus:border-[#02C39A] 
             ${errors.username ? 'border-red-500' : ''}`}
-            {...register("username", { required: true })}
+            {...register("username", { 
+              required: true,
+              minLength: 4,
+              pattern: /^[^\s]+$/,
+            })}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          {errors.username && <p className='text-red-500 text-xs mt-1'>Username is required</p>}
+          {errors.username?.type === "required" && <p className='text-red-500 text-xs mt-1'>Username is required</p>}
+          {errors.username?.type === "minLength" && <p className='text-red-500 text-xs mt-1'>Username must be at least 4 characters long</p>}
+          {errors.username?.type === "pattern" && <p className='text-red-500 text-xs mt-1'>Username cannot contain spaces</p>}
         </div>
 
         <div className='mb-4'>
@@ -52,11 +57,18 @@ function RegisterForm() {
             type='password'
             className={`w-full px-3 py-2 border border-[#AF87CE] rounded-lg text-[16px] focus:border-[#02C39A] 
             ${errors.password ? 'border-red-500' : ''}`}
-            {...register("password", { required: true })}
+            {...register("password", { 
+              required: true,
+              minLength: 6,
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*/
+              ,
+            })}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {errors.password && <p className='text-red-500 text-xs mt-1'>Password is required</p>}
+          {errors.password?.type === "required" && <p className='text-red-500 text-xs mt-1'>Password is required</p>}
+          {errors.password?.type === "minLength" && <p className='text-red-500 text-xs mt-1'>Password must be at least 6 characters long</p>}
+          {errors.password?.type === "pattern" && <p className='text-red-500 text-xs mt-1'>Password must contain at least one uppercase letter and one number</p>}
         </div>
 
         <div className='mb-6'>
@@ -67,7 +79,7 @@ function RegisterForm() {
             type='password'
             className={`w-full px-3 py-2 border border-[#AF87CE] rounded-lg text-[16px] focus:border-[#02C39A]
             ${errors.confirmPassword ? 'border-red-500' : ''}`}
-            {...register("confirmPassword", { 
+            {...register("confirmPassword", {
               required: true,
               validate: {
                 passwordsMatch: (value) => value === password || 'Passwords do not match'
@@ -76,10 +88,12 @@ function RegisterForm() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {errors.confirmPassword && <p className='text-red-500 text-xs mt-1'>Confirm Password is required</p>}
-
-          
+          {errors.confirmPassword?.type === "required" && <p className='text-red-500 text-xs mt-1'>Confirm Password is required</p>}
+          {errors.confirmPassword?.type === "passwordsMatch" && <p className='text-red-500 text-xs mt-1'>Passwords do not match</p>}
         </div>
+            
+        {error && <p className='text-red-500 text-xs mb-3 flex justify-end'>{error}</p>}
+        {successMessage && <p className='text-green-500 text-xs mb-3 flex justify-end'>{successMessage}</p>}
 
         <div className='flex items-center justify-between'>
           <button
