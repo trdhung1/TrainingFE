@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState,memo } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
-function AuthForm() {
+function AuthForm(): JSX.Element {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -42,4 +42,4 @@ function AuthForm() {
   );
 }
 
-export default AuthForm;
+export default memo(AuthForm);

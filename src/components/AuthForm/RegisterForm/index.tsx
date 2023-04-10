@@ -1,20 +1,22 @@
 
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from '../../../store/authSlice'
+import {registerUser } from '../../../store/authSlice'
 import { useForm } from 'react-hook-form'
+import { AppDispatch, RootState } from '../../../store/store'
 
-function RegisterForm() {
+function RegisterForm(): JSX.Element {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const { register, handleSubmit,  formState: { errors } } = useForm();
 
-  const dispatch = useDispatch()
-  const { error, successMessage } = useSelector(state => state.auth)
+  const dispatch = useDispatch<AppDispatch>()
 
-  const handleOnSubmit = async(data) => {
+  const { error, successMessage } = useSelector((state: RootState) => state.auth)
+
+  const handleOnSubmit = async(data: any) => {
     await dispatch(registerUser({
       username: data.username,
       password: data.password,
@@ -108,4 +110,4 @@ function RegisterForm() {
   )
 }
 
-export default RegisterForm
+export default memo(RegisterForm)

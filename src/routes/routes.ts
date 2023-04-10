@@ -14,11 +14,13 @@ export const routes = [
         path: '/employee',
         component: EmployeePage,
         private: true,
+        title: 'Employee Management'
     },
     {
         path: '/authentication',
         component: AuthPage,
         private: false,
+        title: 'Authentication'
     },
     {
         path: '*',

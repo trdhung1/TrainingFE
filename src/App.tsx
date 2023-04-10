@@ -2,25 +2,26 @@ import {  routes } from './routes';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { loginWidthLocalstorage } from './store/authSlice';
-import { useDispatch } from 'react-redux';
+import { RootState } from './store/store';
+import { useLocation } from 'react-router-dom';
+
 
 function App () {
 
-  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const storedUser = JSON.parse(localStorage.getItem('User'));
+  // const location = useLocation();
 
-  useEffect(() => {
-    if (storedUser && !isAuthenticated) {
-      dispatch(loginWidthLocalstorage(storedUser));
-    }
-  }, [dispatch, isAuthenticated, storedUser]);
+  // const currentRoute = routes.find((route) => route.path === location.pathname);
+
+  // useEffect(() => {
+  //   document.title = currentRoute?.title || 'Employee Management App';
+  // }, [currentRoute]);
 
   
   return (
     <Router>
+    
       <Routes>
         {routes.map((route, index) => (
           <Route

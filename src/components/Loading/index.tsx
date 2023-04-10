@@ -1,7 +1,7 @@
-import React from "react";
+
 import { PropagateLoader } from "react-spinners";
 
-const Loading = () => {
+ function Loading(): JSX.Element {
   return (
     <div className="fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-70">
       <div className="relative">

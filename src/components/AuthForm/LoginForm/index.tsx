@@ -1,37 +1,24 @@
 // Login form
-import { useEffect, useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { authenticateUser, loginWidthLocalstorage } from '../../../store/authSlice'
+import { authenticateUser} from '../../../store/authSlice'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-
+import {memo} from 'react'
 import Loading from '../../Loading'
+import { AppDispatch, RootState } from '../../../store/store'
 
-function LoginForm () {
+function LoginForm (): JSX.Element {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
 
-  const error = useSelector(state => state.auth.error)
-  const isLoading = useSelector(state => state.auth.loading)
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-  // use promise all to loading
-  // const [isLoading, setLoading] = useState(false)
+  const { error, loading } = useSelector((state: RootState) => state.auth)
 
-  const handleOnSubmit = async (data) => {
+  const handleOnSubmit = async (data: any) => {
     await dispatch(authenticateUser(data))
     navigate('/employee')
   }
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('User'))
-    if (user) {
-      dispatch(loginWidthLocalstorage(user))
-    }
-  }, [dispatch, isAuthenticated])
-
-
-  
 
 
   return (
@@ -78,10 +65,9 @@ function LoginForm () {
         </div>
       </form>
 
-
-      {isLoading && <Loading />}
+      {loading && <Loading />}
     </div>
   )
 }
 
-export default LoginForm
+export default memo(LoginForm)
