@@ -1,24 +1,19 @@
 {
   "userCorrect": [
     {
-      "username": "root",
-      "password": "root",
+      "username": "admin",
+      "password": "admin",
       "id": 1
     },
     {
-      "username": "admin",
-      "password": "admin",
+      "username": "root",
+      "password": "root",
       "id": 2
     },
     {
-      "username": "huhuhu",
-      "password": "12345678",
+      "username": "user1",
+      "password": "Abcd1234",
       "id": 3
-    },
-    {
-      "username": "huhu   hhuhu",
-      "password": "123456",
-      "id": 4
     }
   ]
 }

@@ -39,7 +39,7 @@
     {
       "id": 5,
       "name": "Nguyen Van Luat",
-      "available": true,
+      "isAvailable": true,
       "age": 25,
       "email": "dungnguyenhd@gmail.com",
       "phone": "0123456789",
