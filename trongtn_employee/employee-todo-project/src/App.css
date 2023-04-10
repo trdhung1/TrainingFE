@@ -2,10 +2,10 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-}
-
-.employees-manage {
-  border: 1px solid red;
-  margin: auto;
-  padding: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(223, 8, 117, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }

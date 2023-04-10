@@ -1,22 +1,76 @@
 {
   "employees": [
     {
-      "name": "Bluth George 5",
-      "age": 28,
-      "phone": "0123456789",
-      "country": "England",
-      "isAvailable": false,
+      "name": "nguyen van a4",
+      "age": "19",
+      "phone": "123456789",
+      "country": "Vietnam",
       "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-      "id": 4
+      "isAvailable": true,
+      "id": 8
     },
     {
-      "id": 5,
-      "name": "Bluth George 4",
-      "age": 29,
-      "phone": "0123456789",
-      "country": "England",
+      "name": "Bluth George 6",
+      "age": "25",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
       "isAvailable": false,
-      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+      "id": 9
+    },
+    {
+      "name": "nguyen van a2",
+      "age": "15",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "isAvailable": true,
+      "id": 10
+    },
+    {
+      "name": "nguyen van a4",
+      "age": "29",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "isAvailable": false,
+      "id": 11
+    },
+    {
+      "name": "Bluth George 1",
+      "age": "26",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "isAvailable": true,
+      "id": 12
+    },
+    {
+      "name": "Bluth George 12",
+      "age": "25",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "isAvailable": false,
+      "id": 13
+    },
+    {
+      "name": "Bluth George 15",
+      "age": "19",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "isAvailable": true,
+      "id": 14
+    },
+    {
+      "name": "Bluth George 15",
+      "age": "20",
+      "phone": "123456789",
+      "country": "Vietnam",
+      "isAvailable": false,
+      "avatar": "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      "id": 15
     }
   ]
 }

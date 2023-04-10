@@ -1,4 +1,5 @@
-import { Pagination } from 'antd';
+import { Pagination } from "antd";
+import "./footer_style.scss";
 
 function FooterPage(props: any) {
   const { page, listEmployeesByPage, listEmployees, handleSetPage } = props;
@@ -8,12 +9,11 @@ function FooterPage(props: any) {
         current={page}
         size="small"
         total={listEmployees?.length}
-        pageSize={5}
+        pageSize={4}
         showTotal={(total) =>
           `Showing ${listEmployeesByPage?.length} out of ${total} entries`
         }
         onChange={(page) => {
-          console.log('check page', page);
           handleSetPage(page);
         }}
       />

@@ -1,6 +1,15 @@
 .header-page {
-    .text {
-        margin-bottom: 10px;
+    background-color: rgba($color: #ffff, $alpha: 0.9);
+    padding: 10px;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        .header-text {
+            font-size: 1.5rem; 
+            font-weight: bolder;
+        }
     }
     .options {
         display: flex;

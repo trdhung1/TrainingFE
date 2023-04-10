@@ -1,7 +1,9 @@
 .listEmployess {
+    background-color: rgba($color: #ffff, $alpha: 0.9);
+    padding: 10px;
     .table-data {
-        border: 1px solid green;
-        min-height: 500px;
+        border: 1px solid lightgray;
+        min-height: 450px;
         .options {
             display: flex;
             gap: 5px;
