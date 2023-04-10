@@ -7,7 +7,7 @@ import employeeApi from "../../api/employee.api";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { getAllEmployees } from "../../store/slices/employee.slice";
 import { useState } from "react";
-import ModalCreate from "../../common/ModalCreate/ModalCreate";
+import ModalCreateOrUpdate from "../../common/modalCreateOrUpdate/ModalCreateOrCreate";
 import { toast } from "react-toastify";
 
 const ListEmployees = (props: any) => {
@@ -111,7 +111,7 @@ const ListEmployees = (props: any) => {
       >
         <p>Are you sure to delete this user?</p>
       </Modal>
-      <ModalCreate
+      <ModalCreateOrUpdate
         isOpenCreateOrUpdate={isOpenCreateOrUpdate}
         handleToggleModal={handleToggleModal}
         selectedEmployee={selectedEmployee}

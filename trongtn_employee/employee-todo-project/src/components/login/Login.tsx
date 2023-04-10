@@ -12,7 +12,7 @@ function Login() {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state) => state.auth.isLoading);
 
-  const onFinish = async (inputData: any) => {
+  const onFinish = async (inputData: { email: string; password: string }) => {
     try {
       dispatch(authActions.login(inputData));
       const response = await authApi.login(inputData);
@@ -31,7 +31,6 @@ function Login() {
       }
     } catch (e) {
       dispatch(authActions.loginFailed(inputData));
-      console.log(e);
     }
   };
   return accessToken?.isLoggedIn ? (
@@ -44,10 +43,8 @@ function Login() {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
         onFinish={onFinish}
         labelAlign="left"
-        // onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item

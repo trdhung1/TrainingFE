@@ -6,7 +6,7 @@ import { getAllEmployees } from "../../store/slices/employee.slice";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-function ModalCreate(props: any) {
+function ModalCreateOrUpdate(props: any) {
   const dispatch = useAppDispatch();
   const {
     selectedEmployee,
@@ -134,4 +134,4 @@ function ModalCreate(props: any) {
   );
 }
 
-export default ModalCreate;
+export default ModalCreateOrUpdate;

@@ -2,7 +2,7 @@ import { Button, Input } from "antd";
 import "./headerPage_style.scss";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import ModalCreate from "../../common/ModalCreate/ModalCreate";
+import ModalCreateOrUpdate from "../../common/modalCreateOrUpdate/ModalCreateOrCreate";
 import useDebounce from "../../hooks/useDebounce";
 import Logout from "../logout/Logout";
 
@@ -34,7 +34,7 @@ function HeaderPage(props: any) {
         </Button>
       </div>
 
-      <ModalCreate
+      <ModalCreateOrUpdate
         isOpenModalCreate={isOpenCreateOrUpdate}
         handleToggleModal={handleToggleModal}
       />
