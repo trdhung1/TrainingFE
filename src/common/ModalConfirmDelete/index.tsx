@@ -27,37 +27,31 @@ function ConfirmDeleteModal() {
   };
 
   return (
-    <Dialog open={true} onClose={() => {}}
-    sx={{
-      backgroundColor: "rgba(255,255,255,0.1)",
-      opacity: 0.8,
-      "& .MuiDialog-paper": {
-        backgroundColor: "#fff",
-        borderRadius: "10px",
-        padding: "20px",
-      },
-     
-    }}
-    >
-      <DialogTitle>Confirm Delete</DialogTitle>
-      <DialogContent>
-        <DialogContentText className=''>
-          Are you sure you want to delete this employee?
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          color='primary'
-          variant='outlined'
-          onClick={handleCloseModalConfirmDelete}
-        >
-          Cancel
-        </Button>
-        <Button color='error' variant='contained' onClick={handleDelete}>
-          Delete
-        </Button>
-      </DialogActions>
-    </Dialog>
+    <div>
+      <Dialog open={true} hideBackdrop={true}>
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText >
+            Are you sure you want to delete this employee?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            color='primary'
+            variant='outlined'
+            onClick={handleCloseModalConfirmDelete}
+          >
+            Cancel
+          </Button>
+          <Button color='error' variant='contained' onClick={handleDelete}>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <div
+        className='overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 z-10'
+      ></div>
+    </div>
   );
 }
 

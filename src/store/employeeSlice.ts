@@ -27,19 +27,17 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   return response.data;
 });
 
-// search by name  user name
+// search by name  user name || email || phone
 export const searchUser = createAsyncThunk(
   "users/searchUser",
-  async (name: string) => {
+  async (search: string) => {
     const response = await getUsers();
-    const data = response.data.filter((user: IEmployee) => {
-      return user.name.toLowerCase().includes(name.toLowerCase());
+    const users = response.data.filter((user: IEmployee) => {
+      return user.name.toLowerCase().includes(search.toLowerCase()) || user.email.toLowerCase().includes(search.toLowerCase()) || user.phone.toLowerCase().includes(search.toLowerCase());
     });
-    return data;
+    return users;
   }
 );
-
-
 
 
 
@@ -92,6 +90,7 @@ const employeeSlice = createSlice({
     })
     .addCase(editEmployee.fulfilled, (state, action) => {
       state.users = action.payload;
+        
     })
 
     .addCase(deleteEmployee.fulfilled, (state, action) => {

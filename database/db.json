@@ -1,24 +1,42 @@
 {
   "users": [
     {
-      "name": "Nguyễn Tuấn Anh",
+      "id": 3,
+      "name": "Đỗ Xuân Bảng",
       "age": "21",
-      "email": "ntanh161@gmail.com",
-      "isAvailable": "true",
+      "email": "bangdoeagle@gmail.com",
+      "isAvailable": true,
       "phone": "0987654742",
-      "address": "Bắc Ninh",
-      "img": "https://www.w3schools.com/howto/img_avatar.png",
-      "id": 11
+      "address": "Ninh Bình",
+      "img": "https://www.w3schools.com/howto/img_avatar.png"
     },
     {
-      "name": "Vũ Thị Thanh Thảo",
-      "age": "21",
-      "email": "thanhthao181@gmail.com",
-      "isAvailable": "true",
-      "phone": "0987654742",
+      "name": "Vũ Thị Thảo Vân",
+      "age": "24",
+      "email": "thaovanv@gmail.com",
+      "phone": "0122345678",
+      "isAvailable": true,
+      "address": "Nam Định",
+      "img": "https://www.w3schools.com/howto/img_avatar.png",
+      "id": 4
+    },
+    {
+      "name": "Nguyễn Hữu Vinh",
+      "age": "20",
+      "email": "vinhhuuhn@gmail.com",
+      "phone": "0987654321",
       "address": "Hà Nội",
       "img": "https://www.w3schools.com/howto/img_avatar.png",
-      "id": 12
+      "id": 5
+    },
+    {
+      "name": "Nguyễn Tuấn Anh",
+      "age": "28",
+      "email": "ntanh161@gmail.com",
+      "phone": "033897486",
+      "address": "Bắc Ninh",
+      "img": "https://www.w3schools.com/howto/img_avatar.png",
+      "id": 6
     }
   ]
 }

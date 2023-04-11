@@ -51,9 +51,9 @@ function EmployeeItem(props: EmployeeItemProps): JSX.Element {
         </TableCell>
         <TableCell>
           <Typography variant='body1' className='flex items-center'>
-            {employee?.isAvailable ? (
+            {employee.isAvailable ? (
               <span>
-                <Check color='primary' />
+                <Check color='primary'   />
                 <span className='ml-2'>Active</span>
               </span>
             ) : (
