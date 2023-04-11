@@ -1,49 +1,24 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "available": true,
-      "age": 25,
-      "email": "dungnguyenhd@gmail.com",
-      "phone": "0123456789",
-      "address": "Ha Noi"
+      "name": "Nguyễn Tuấn Anh",
+      "age": "21",
+      "email": "ntanh161@gmail.com",
+      "isAvailable": "true",
+      "phone": "0987654742",
+      "address": "Bắc Ninh",
+      "img": "https://www.w3schools.com/howto/img_avatar.png",
+      "id": 11
     },
     {
-      "id": 2,
-      "name": "Nguyen Duc Dung",
-      "available": true,
-      "age": 25,
-      "email": "dungnguyenhd@gmail.com",
-      "phone": "0123456789",
-      "address": "Ha Noi"
-    },
-    {
-        "id": 3,
-      "name": "Do Xuan Bang",
-      "available": true,
-      "age": 25,
-      "email": "dungnguyenhd@gmail.com",
-      "phone": "0123456789",
-      "address": "Ha Noi"
-    },
-    {
-        "id": 4,
-      "name": "Nguyen Tuan Anh",
-      "available": true,
-      "age": 25,
-      "email": "dungnguyenhd@gmail.com",
-      "phone": "0123456789",
-      "address": "Ha Noi"
-    },
-    {
-      "id": 5,
-      "name": "Nguyen Van Luat",
-      "isAvailable": true,
-      "age": 25,
-      "email": "dungnguyenhd@gmail.com",
-      "phone": "0123456789",
-      "address": "Ha Noi"
+      "name": "Vũ Thị Thanh Thảo",
+      "age": "21",
+      "email": "thanhthao181@gmail.com",
+      "isAvailable": "true",
+      "phone": "0987654742",
+      "address": "Hà Nội",
+      "img": "https://www.w3schools.com/howto/img_avatar.png",
+      "id": 12
     }
   ]
 }

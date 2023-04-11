@@ -8,6 +8,6 @@ import axios, { AxiosInstance } from "axios";
 export default instance;
 
 export const authUrl: AxiosInstance = axios.create({
-  baseURL: "http://localhost:8082",
+  baseURL: "https://reqres.in/api",
   timeout: 10000,
 });

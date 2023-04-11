@@ -1,10 +1,13 @@
-
+import images from '../../assets/images';
 function NotFound() {
     return (
-        <div>
-            <h1>404 Not Found</h1>
+        <div className="not-found w-full h-screen"
+        >
+        <img src={images.notFoundIMG} alt="Not Found"
+        className="w-full h-full object-cover"
+         />
         </div>
-      );
+    );
 }
 
 export default NotFound;

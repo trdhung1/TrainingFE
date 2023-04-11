@@ -1,10 +1,10 @@
 // Login form
 
 import { useDispatch, useSelector } from 'react-redux'
-import { authenticateUser} from '../../../store/authSlice'
+import {login, setIsAuthenticated} from '../../../store/authSlice'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import {memo} from 'react'
+import {memo, useEffect} from 'react'
 import Loading from '../../Loading'
 import { AppDispatch, RootState } from '../../../store/store'
 
@@ -16,13 +16,20 @@ function LoginForm (): JSX.Element {
   const { error, loading } = useSelector((state: RootState) => state.auth)
 
   const handleOnSubmit = async (data: any) => {
-    await dispatch(authenticateUser(data))
+    await dispatch(login(data))
     navigate('/employee')
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      dispatch(setIsAuthenticated(true))
+      navigate('/employee')
+    }
+  }, [dispatch, navigate])
 
   return (
-    <div className=''>
+    <div className='w-[480px]'>
       <form onSubmit={handleSubmit(handleOnSubmit)} className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
         <div className='form_title mb-4 font-bold text-3xl text-center'>
           Login

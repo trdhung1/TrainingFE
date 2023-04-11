@@ -3,6 +3,7 @@ import EmployeePage from '../pages/EmployeePage';
 import NotFound from '../pages/NotFound';
 import AuthPage from '../pages/AuthPage';
 
+
 export const routes = [
     {
         path: '/',
@@ -26,7 +27,8 @@ export const routes = [
         path: '*',
         component: NotFound,
         private: false,
-    },
+        title: 'Not Found'
+    }
 ];
 
 
