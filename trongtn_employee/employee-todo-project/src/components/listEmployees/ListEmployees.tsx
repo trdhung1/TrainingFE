@@ -13,8 +13,10 @@ import { toast } from "react-toastify";
 const ListEmployees = (props: any) => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector((state) => state.employees.isLoading);
+
   const { listEmployeesByPage, isOpenCreateOrUpdate, handleToggleModal } =
     props;
+
   const [selectedEmployee, setSelectedEmployee] = useState<iEmployeeType>({});
   const [isOpenConfirm, setIsOpenConfirm] = useState<boolean>(false);
   const [currentId, setCurrentId] = useState<number>(0);
@@ -22,6 +24,7 @@ const ListEmployees = (props: any) => {
   const handleToggle = () => {
     setIsOpenConfirm(!isOpenConfirm);
   };
+
   const handleDelete = async (inputId: number) => {
     try {
       await employeeApi.deleteEmployeeById(inputId);
@@ -43,18 +46,25 @@ const ListEmployees = (props: any) => {
     {
       title: "Name",
       dataIndex: "name",
+      ellipsis: true,
+      width: "200px",
     },
     {
       title: "Age",
       dataIndex: "age",
+      width: "60px",
     },
     {
       title: "Phone",
       dataIndex: "phone",
+      ellipsis: true,
+      width: "100px",
     },
     {
       title: "Country",
       dataIndex: "country",
+      ellipsis: true,
+      width: "100px",
     },
     {
       title: "Available",

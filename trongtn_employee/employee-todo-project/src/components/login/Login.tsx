@@ -33,6 +33,7 @@ function Login() {
       dispatch(authActions.loginFailed(inputData));
     }
   };
+
   return accessToken?.isLoggedIn ? (
     <Navigate to="/" />
   ) : (

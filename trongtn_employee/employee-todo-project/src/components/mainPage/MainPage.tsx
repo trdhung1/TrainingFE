@@ -30,10 +30,6 @@ function MainPage() {
     setPage(page);
   };
 
-  useEffect(() => {
-    dispatch(getAllEmployees());
-  }, []);
-
   const getListEmployeesByPage = (
     listEmployees: iEmployeeType[]
   ): iEmployeeType[] => {
@@ -52,6 +48,10 @@ function MainPage() {
     setFilterEmployees(result);
     setPage(1);
   };
+
+  useEffect(() => {
+    dispatch(getAllEmployees());
+  }, []);
 
   useEffect(() => {
     setFilterEmployees(handleReverse(listData));

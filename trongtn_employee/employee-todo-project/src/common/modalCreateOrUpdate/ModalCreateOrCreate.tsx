@@ -38,6 +38,7 @@ function ModalCreateOrUpdate(props: any) {
         toast.success("Update employee succeed!");
         handleToggleModal();
         form.resetFields();
+        setSelectedEmployee({});
       } catch (e) {
         toast.error("Error from server!");
       }
@@ -70,6 +71,7 @@ function ModalCreateOrUpdate(props: any) {
         onCancel={() => {
           handleToggleModal();
           setSelectedEmployee({});
+          form.resetFields();
         }}
         footer={null}
       >
@@ -82,28 +84,60 @@ function ModalCreateOrUpdate(props: any) {
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: "Please input name!" }]}
+            rules={[
+              {
+                validator: (_, value) =>
+                  !value?.trim()
+                    ? Promise.reject(new Error("Please input name!"))
+                    : Promise.resolve(),
+                message: "Please input name!",
+              },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Age"
             name="age"
-            rules={[{ required: true, message: "Please input age!" }]}
+            rules={[
+              {
+                validator: (_, value) =>
+                  !value?.trim()
+                    ? Promise.reject(new Error("Please input age!"))
+                    : Promise.resolve(),
+                message: "Please input age!",
+              },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Phone"
             name="phone"
-            rules={[{ required: true, message: "Please input phone!" }]}
+            rules={[
+              {
+                validator: (_, value) =>
+                  !value?.trim()
+                    ? Promise.reject(new Error("Please input phone!"))
+                    : Promise.resolve(),
+                message: "Please input phone!",
+              },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Country"
             name="country"
-            rules={[{ required: true, message: "Please input country!" }]}
+            rules={[
+              {
+                validator: (_, value) =>
+                  !value?.trim()
+                    ? Promise.reject(new Error("Please input country!"))
+                    : Promise.resolve(),
+                message: "Please input country!",
+              },
+            ]}
           >
             <Input />
           </Form.Item>

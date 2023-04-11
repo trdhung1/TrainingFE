@@ -8,10 +8,10 @@ function PageNotFound() {
       <Result
         status="404"
         title="404"
-        subTitle="Xin lỗi, trang bạn đang vào không tồn tại."
+        subTitle="Sorry, the page you visited does not exist."
         extra={
           <Button type="default">
-            <Link to="/">Quay lại Trang chủ</Link>
+            <Link to="/">Back Home</Link>
           </Button>
         }
       />

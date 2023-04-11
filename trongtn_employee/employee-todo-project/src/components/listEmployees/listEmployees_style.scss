@@ -1,9 +1,10 @@
 .listEmployess {
-    background-color: rgba($color: #ffff, $alpha: 0.9);
+    background-color: var(--customWhite);
     padding: 10px;
     .table-data {
-        border: 1px solid lightgray;
+        border: 1px solid var(--lightgrey);
         min-height: 450px;
+        width: 800px;
         .options {
             display: flex;
             gap: 5px;

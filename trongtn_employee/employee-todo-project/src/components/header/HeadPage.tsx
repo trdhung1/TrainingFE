@@ -24,7 +24,7 @@ function HeaderPage(props: any) {
       <div className="options">
         <Input
           onChange={(e) => {
-            setTextSearch(e.target.value);
+            setTextSearch(e.target.value.trim());
           }}
           placeholder="Search name"
         />
