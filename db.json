@@ -1,49 +1,28 @@
 {
   "Employee": [
     {
-      "id": 5,
-      "name": "khanhdat",
-      "age": 19,
-      "phone": " 093248392",
-      "country": "America",
-      "isAvailable": true,
-      "img": "https://reqres.in/img/faces/9-image.jpg"
+      "name": "ád",
+      "age": "ádád",
+      "phone": "ádasd",
+      "country": "ád",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 5
     },
     {
-      "id": 7,
-      "name": "khanhdat",
-      "age": 19,
-      "phone": " 093248392",
-      "country": "America",
-      "isAvailable": true,
-      "img": "https://reqres.in/img/faces/9-image.jpg"
+      "name": "ewr",
+      "age": "wer",
+      "phone": "wer",
+      "country": "ewr",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 10
     },
     {
-      "id": 9,
-      "name": "khanhdat",
-      "age": 19,
-      "phone": " 093248392",
-      "country": "America",
-      "isAvailable": true,
-      "img": "https://reqres.in/img/faces/9-image.jpg"
-    },
-    {
-      "id": 10,
-      "name": "khanhdat",
-      "age": 19,
-      "phone": " 093248392",
-      "country": "America",
-      "isAvailable": true,
-      "img": "https://reqres.in/img/faces/9-image.jpg"
-    },
-    {
-      "id": 11,
-      "name": "khanhdat",
-      "age": 19,
-      "phone": " 093248392",
-      "country": "America",
-      "isAvailable": true,
-      "img": "https://reqres.in/img/faces/9-image.jpg"
+      "name": "sad",
+      "age": "ád",
+      "phone": "sad",
+      "country": "ádád",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 11
     },
     {
       "id": 12,
@@ -73,40 +52,52 @@
       "img": "https://reqres.in/img/faces/9-image.jpg"
     },
     {
-      "name": "dsfe",
-      "age": "sdfẻ",
-      "phone": "sdfẻ",
-      "country": "sdfsdfr",
-      "img": "cvintern.jpeg",
-      "id": 15
-    },
-    {
-      "name": "fgh",
-      "age": "rty",
-      "phone": "rty",
-      "country": "try",
-      "img": "279971940_1084092002321359_790961480151358915_n.jpeg",
-      "id": 16
-    },
-    {
-      "name": "",
-      "age": "",
-      "phone": "",
-      "country": "",
-      "img": {
-        "name": {}
-      },
+      "name": "ád",
+      "age": "á",
+      "phone": "ád",
+      "country": "ád",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
       "id": 17
     },
     {
-      "name": "",
-      "age": "",
-      "phone": "",
-      "country": "",
-      "img": {
-        "name": {}
-      },
+      "name": "sf",
+      "age": "sdf",
+      "phone": "sdf",
+      "country": "dsf",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
       "id": 18
+    },
+    {
+      "name": "sdf",
+      "age": "sdf",
+      "phone": "sdf",
+      "country": "dsf",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 19
+    },
+    {
+      "name": "df",
+      "age": "sdf",
+      "phone": "sdf",
+      "country": "dsf",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 20
+    },
+    {
+      "name": "ád",
+      "age": "ád",
+      "phone": "ád",
+      "country": "ád",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 21
+    },
+    {
+      "name": "93248392",
+      "age": "22",
+      "phone": "0822069328",
+      "country": "Việt Nam",
+      "img": "https://reqres.in/img/faces/9-image.jpg",
+      "id": 22
     }
   ]
 }

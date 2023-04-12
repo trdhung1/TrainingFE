@@ -1,8 +1,8 @@
 import PopupForm from '../../../common/PopupForm/PopupForm';
 import { useState } from 'react';
-import { AiOutlineDelete } from 'react-icons/ai'
+import {  BiPencil } from 'react-icons/bi'
 import Button from '@mui/material/Button';
-import ModalDelete from '../../../component/modal/Modal';
+import ModalDelete from '../../../component/Modal/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function ListEmployee({ list }) {
@@ -12,11 +12,11 @@ function ListEmployee({ list }) {
     const handleOpenModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const handleClickOpen = () => {
+    const handleOpenPopup = () => {
         setOpen(true);
-    };
+    }; 
 
-    const handleClose = () => {
+    const handleClosePopup = () => {
         setOpen(false);
     };
 
@@ -30,14 +30,17 @@ function ListEmployee({ list }) {
                 <td>{list.country}</td>
                 <td><img style={{ height: '70px' }} src={list.img} alt='abv' /></td>
                 <td>
-                    <Button variant="warning" onClick={handleClickOpen}><AiOutlineDelete /></Button>{' '}
+                    <Button variant="warning" onClick={handleOpenPopup}> <BiPencil  /></Button>{' '}
                 </td>
                 <td >
                     <Button className='d-flex m-auto' variant="danger" onClick={handleOpenModal} ><DeleteIcon /> </Button>{' '}
                 </td>
-            </tr>
-            <PopupForm list={list} open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} />
+                
+            {open && <PopupForm list={list} handleClosePopup={handleClosePopup} />
+            }
+
             <ModalDelete modal={modal} handleCloseModal={handleCloseModal} id={list.id} />
+            </tr>
         </>
     );
 }

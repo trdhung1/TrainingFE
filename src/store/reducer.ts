@@ -14,7 +14,7 @@ export const fetchEmployees = createAsyncThunk(
 
 export const addEmployee = createAsyncThunk(
     'employee/addEmployee',
-    async (data:IEmployee, thunkAPI) => {
+    async (data: IEmployee, thunkAPI) => {
         await createEmployeeApi(data);
         thunkAPI.dispatch(fetchEmployees());
     }
@@ -22,7 +22,7 @@ export const addEmployee = createAsyncThunk(
 
 export const putEmployee = createAsyncThunk(
     'employee/putEmployee',
-    async ({ id, data }: { id: number, data:IEmployee }, thunkAPI) => {
+    async ({ id, data }: { id: number, data: IEmployee }, thunkAPI) => {
         await putEmployeeApi(id, data);
         thunkAPI.dispatch(fetchEmployees());
     }
@@ -41,12 +41,14 @@ export const deleteEmployee = createAsyncThunk(
 )
 
 interface IEmployeesReducer {
-    listEmployee:IEmployee[];
+    listEmployee: IEmployee[];
+    searchEmployee: IEmployee[];
     status: 'loading' | 'error';
 }
 
-const initialState:IEmployeesReducer = {
+const initialState: IEmployeesReducer = {
     listEmployee: [],
+    searchEmployee: [],
     status: 'loading',
 };
 
@@ -54,7 +56,7 @@ const employeesReducer = createSlice({
     name: 'employee',
     initialState,
     reducers: {
-
+        searchEmployee: (state, action) => ({ ...state, searchEmployee: action.payload }),
     },
     extraReducers: (builder) => {
         builder
@@ -98,4 +100,5 @@ const employeesReducer = createSlice({
     },
 });
 
+export const { searchEmployee } = employeesReducer.actions;
 export default employeesReducer.reducer

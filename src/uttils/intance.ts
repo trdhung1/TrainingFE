@@ -17,6 +17,7 @@ export const createEmployeeApi = (data: any) => {
 };
 
 export const putEmployeeApi = (id: number, data:IEmployee) => {
+
     return instance.put(`/Employee/${id}`, data)
 };
 

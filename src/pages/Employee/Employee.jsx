@@ -1,101 +1,102 @@
-import Table from 'react-bootstrap/Table';
 import { useEffect, useState, useMemo } from 'react';
-import ListEmployee from './ListEmployee/ListEmployee';
-import ReactPaginate from 'react-paginate';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchEmployees } from '../../store/reducer'
-import Profile from './Profile/Profile';
-import styles from './Employee.module.scss'
-import { IoMdAddCircleOutline } from 'react-icons/io'
+import { fetchEmployees } from '../../store/reducer';
+import styles from './Employee.module.scss';
+import { IoMdAddCircleOutline } from 'react-icons/io';
+import { Icon } from '@material-ui/core';
 import PopupForm from '../../common/PopupForm/PopupForm';
+import { BiPencil } from 'react-icons/bi';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { searchEmployee } from '../../store/reducer';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
 
 function TableEmployee({ itemsPerPage = 5 }) {
 
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'name', headerName: 'Name', width: 160 },
+        { field: 'phone', headerName: 'Phone', width: 140 },
+        {
+            field: 'img',
+            headerName: 'Img',
+            width: 80,
+            renderCell: (params) => (
+                <img src={params.value} alt="avatar" style={{ width: '70%', height: 'auto' }} />
+            ),
+        },
+        {
+            field: 'age',
+            headerName: 'Age',
+            type: 'number',
+            width: 80,
+            marginRight: 20
+        },
+        {
+            field: 'country',
+            headerName: 'Country',
+            width: 130,
+        },
+        {
+            field: 'edit',
+            headerName: 'Edit',
+            width: 100,
+            renderCell: () => (
+                <Icon style={{ color: '#2278CF', fontSize: 20, display: 'flex', flex: 'flex-start' }} onClick={handleOpenPopup} >
+                    <BiPencil />
+                </Icon>
+            ),
+        },
+        {
+            field: 'delete',
+            headerName: 'Delete',
+            width: 100,
+            renderCell: () => (
+                <Icon style={{ color: '#2278CF', fontSize: 20, display: 'flex', flex: 'flex-start' }} onClick={() => alert('jdhfj')}>
+                    <DeleteIcon />
+                </Icon>
+            ),
+        },
+
+    ];
+
     const dispatch = useDispatch()
+
     const listEmployee = useSelector((state) => state.employeesReducer.listEmployee)
     const [open, setOpen] = useState(false)
-    const [itemOffset, setItemOffset] = useState(0);
+    const [list, setList] = useState({})
 
-    const currentItems = useMemo(() => {
-
-        const endOffset = itemOffset + itemsPerPage;
-        return listEmployee.slice(itemOffset, endOffset);
-
-    }, [listEmployee, itemOffset, itemsPerPage])
-
-    const pageCount = useMemo(() => {
-
-        return Math.ceil(listEmployee.length / itemsPerPage);
-
-    }, [listEmployee, itemsPerPage]);
-
-    const handlePageClick = (event) => {
-
-        const newOffset = (event.selected * itemsPerPage) % listEmployee.length;
-
-        setItemOffset(newOffset);
-    };
+    const rows = listEmployee
 
     useEffect(() => {
         dispatch(fetchEmployees())
     }, [dispatch])
+    const handleOpenPopup = (event) => {
+        setOpen(true)
+    }
 
-    const [showA, setShowA] = useState(false);
-    const toggleShowA = () => setShowA(!showA);
-
-    const handleClose = () =>{
-
+    const handleClosePopup = () => {
         setOpen(false)
+        setList({})
     }
 
     return (
         <div style={{ display: 'flex', height: '100vh' }}>
             <div style={{ width: '85%', margin: 'auto' }}>
-                <Table striped bordered hover size="sm">
-                    <thead>
-                        <tr>
-                            <th className='d-flex m-auto' >Id</th>
-                            <th >Name</th>
-                            <th>Age</th>
-                            <th className='d-flex m-auto' >Phone</th>
-                            <th>Country</th>
-                            <th>Image</th>
-                            <th>Change</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            currentItems.map((list, index) => (
-                                <ListEmployee key={index} list={list} />
-                            ))
-                        }
-                    </tbody>
-                </Table>
-
-                <ReactPaginate
-                    previousLabel={"previous"}
-                    nextLabel={"next"}
-                    breakLabel={"..."}
-                    pageCount={pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
-                    onPageChange={handlePageClick}
-                    containerClassName={"pagination justify-content-center"}
-                    pageClassName={"page-item"}
-                    pageLinkClassName={"page-link"}
-                    previousClassName={"page-item"}
-                    previousLinkClassName={"page-link"}
-                    nextClassName={"page-item"}
-                    nextLinkClassName={"page-link"}
-                    breakClassName={"page-item"}
-                    breakLinkClassName={"page-link"}
-                    activeClassName={"active"}
-                />
+                <button className={styles.create_btn} onClick={() => handleOpenPopup()} >Create Employee <IoMdAddCircleOutline /></button>
+                <div style={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5, 10, 20]}
+                        onRowClick={(params) => {
+                            setList(params.row)
+                        }}
+                    />
+                    {open && <PopupForm list={list} handleClosePopup={handleClosePopup} />}
+                </div>
             </div>
-            <button className={styles.create_btn} onClick={() => setOpen(true)} >Create Employee <IoMdAddCircleOutline /></button>
-            <PopupForm open={open} handleClose={handleClose} />
-            <Profile />
         </div>
 
     );

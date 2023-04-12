@@ -4,7 +4,7 @@ export interface IEmployee {
     phone: string,
     name: string,
     img: string,
-    isAvailable: boolean,
+    isAvailable?: boolean,
     country: string
 
 }

@@ -4,31 +4,29 @@ import styles from './Profile.module.scss'
 import { CgProfile } from 'react-icons/cg'
 import { BsFillKeyFill } from 'react-icons/bs'
 import { CiLogout } from 'react-icons/ci'
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 
 function Profile() {
 
     const [visible, setVisible] = useState(false);
-
-    const navigate = useNavigate()
+ 
     const Logout = () => {
-        localStorage.removeItem('token');
-        navigate("/")
         toast.success("successful logout");
+        localStorage.removeItem('token');
     }
+
     return (
         <div className={styles.avatar_wapper}>
-            <Avatar src="https://reqres.in/img/faces/9-image.jpg" alt='avtar' onClick={() => {
+            <Avatar src="	https://vatek-hrm-tool.s3.ap-southeast-1.amazonaws.com/production/avatar/641022b3e7497fce56fdbcdb" alt='avtar' onClick={() => {
                 setVisible(!visible)
             }} />
-
             {
                 visible &&
                 <div className={styles.tooltip}>
-                    <div> <CgProfile /> My Profile</div>
-                    <div> <BsFillKeyFill /> Change Password</div>
-                    <div onClick={Logout}> <CiLogout /> Logout</div>
+                    <div><Link to='profile' className={styles.link}><CgProfile /> My Profile</Link> </div>
+                    <div><Link to='changepassword' className={styles.link}> <BsFillKeyFill style={{marginRight : '3px'}} />Change Password</Link>  </div>
+                    <div onClick={Logout} ><Link  to='login' className={styles.link}><CiLogout /> Logout </Link> </div>
                 </div>
             }
         </div>

@@ -1,0 +1,33 @@
+.avatar_wapper {
+  position: fixed;
+  top: 30px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 999;
+
+  .tooltip {
+    border-radius: 5px;
+    box-shadow: -1px 4px 7px 3px rgba(0, 0, 0, 0.3);
+    width: 180px;
+
+    background-color: red;
+    right: 0;
+    top: 120%;
+    background-color: var(--bg-color);
+    position: absolute;
+
+    .link {
+      text-decoration: none;
+      color: var(--color);
+    }
+
+    div {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    div:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
