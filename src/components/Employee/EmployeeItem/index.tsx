@@ -9,7 +9,6 @@ import {
 import { IEmployee, setEmployeeID } from "../../../store/employeeSlice";
 import { Check, Close, Delete, Edit } from "@mui/icons-material";
 import { AppDispatch } from "../../../store/store";
-
 import { memo } from "react";
 import { RootState } from "../../../store/store";
 import EmployeeModal from "../../../common/ModalEdit";
@@ -23,25 +22,28 @@ interface EmployeeItemProps {
 
 function EmployeeItem(props: EmployeeItemProps): JSX.Element {
   const { employee, index } = props;
+
   const dispatch = useDispatch<AppDispatch>();
   const { modalEditIsOpen, modalDeleteIsOpen } = useSelector(
     (state: RootState) => state.modal
   );
 
   const handleOpenModalEdit = async () => {
+    await dispatch(setEmployeeID(employee.id!));
     await dispatch(openModalEdit("edit"));
-    dispatch(setEmployeeID(employee.id!));
   };
 
   const handleOpenModalConfirmDelete = async () => {
+    await dispatch(setEmployeeID(employee.id!));
     await dispatch(openModalDelete());
-    dispatch(setEmployeeID(employee.id!));
   };
+
+  
   return (
     <>
       <TableRow key={employee.id}>
         <TableCell>
-          <Typography variant='body1'>{index + 1}</Typography>
+          <Typography variant='body1'>{index}</Typography>
         </TableCell>
         <TableCell>
           <div className='flex items-center'>
@@ -53,7 +55,7 @@ function EmployeeItem(props: EmployeeItemProps): JSX.Element {
           <Typography variant='body1' className='flex items-center'>
             {employee.isAvailable ? (
               <span>
-                <Check color='primary'   />
+                <Check color='primary' />
                 <span className='ml-2'>Active</span>
               </span>
             ) : (
@@ -82,7 +84,7 @@ function EmployeeItem(props: EmployeeItemProps): JSX.Element {
               <Edit color='primary' />
             </IconButton>
             <IconButton onClick={handleOpenModalConfirmDelete}>
-              <Delete color='error'  />
+              <Delete color='error' />
             </IconButton>
           </Typography>
         </TableCell>

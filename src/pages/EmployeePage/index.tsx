@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from "../../store/store";
 import EmployeeModal from "../../common/ModalEdit";
 import { searchUser } from "../../store/employeeSlice";
 
+
 function EmployeePage() {
   const dispatch = useDispatch<AppDispatch>();
   const modalEditIsOpen = useSelector(
@@ -29,7 +30,9 @@ function EmployeePage() {
     <>
      
         <Header />
-        <div className='flex items-center mt-32 justify-center'>
+        <div className='flex items-center  justify-center fixed left-[50%]  right-2/4 top-[15%] z-6  '>
+         
+          <div className='flex-1'>
           <TextField
             name='search'
             label='Search'
@@ -38,10 +41,14 @@ function EmployeePage() {
             value={searchTerm}
             className='w-[385px]'
             onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder='Search employee by name, email, phone !'  
             sx={{
               marginRight: "20px",
-            }}
-          />
+             
+            }} 
+            /> 
+          </div>
+        
           <Button variant='contained' onClick={handleSearch}>
             Search
           </Button>
@@ -54,7 +61,7 @@ function EmployeePage() {
             Add
           </Button>
         </div>
-        <div className='mx-auto mt-12 flex justify-center'>
+        <div className='mx-auto mt-52 flex justify-center'>
           <Employee />
         </div>
      

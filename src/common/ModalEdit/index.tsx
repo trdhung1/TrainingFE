@@ -1,12 +1,5 @@
-
-import { useState } from "react";
-import {
-  Modal,
-  TextField,
-  Button,
-  Box,
-  Typography,
-} from "@mui/material";
+import { useState, memo } from "react";
+import { Modal, TextField, Button, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import {
@@ -28,46 +21,42 @@ interface FormData {
 
 function EmployeeModal() {
   const dispatch = useDispatch<AppDispatch>();
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-
-  const handleCloseModalEdit = () => {
-    dispatch(closeModalEdit());
-  };
 
   const modalType = useSelector((state: RootState) => state.modal.modalType);
   const employeeID = useSelector((state: RootState) => state.users.employeeID);
   const employees = useSelector((state: RootState) => state.users.users);
-
   const originalEmployee: any =
-    Array.isArray(employees) &&
-    employees.find((employee: IEmployee) => employee.id === employeeID);
+  Array.isArray(employees) &&
+  employees.find((employee: IEmployee) => employee.id === employeeID);
+
+  const [employee, setEmployee] = useState({
+    name: modalType === "edit" ? originalEmployee?.name || " " : "",
+    age: modalType === "edit" ? originalEmployee?.age || " " : "",
+    email: modalType === "edit" ? originalEmployee?.email || " " : "",
+    phone: modalType === "edit" ? originalEmployee?.phone || " " : "",
+    address: modalType === "edit" ? originalEmployee?.address || " " : ""
+  });
+
+  const {name, age, email, phone, address} = employee
+  
+  const handleCloseModalEdit = () => {
+    dispatch(closeModalEdit());
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
-    defaultValues: {
-      name: "",
-      age: 0,
-      email: "",
-      phone: "",
-      address: "",
-    },
-  });
+  } = useForm<FormData>();
 
   const handleSave = async (data: FormData) => {
     if (modalType === "add") {
       const employee: IEmployee = {
-        name: data.name,
+        name: data.name.trim(),
         age: data.age,
-        email: data.email,
-        phone: data.phone,
-        address: data.address,
+        email: data.email.trim(),
+        phone: data.phone.trim(),
+        address: data.address.trim(),
         img: "https://www.w3schools.com/howto/img_avatar.png",
       };
       await dispatch(addEmployee(employee));
@@ -75,11 +64,12 @@ function EmployeeModal() {
     } else {
       const employee: IEmployee = {
         ...originalEmployee,
-        name: data.name !== "" ? data.name : originalEmployee.name,
+        name: data.name.trim() !== "" ? data.name.trim() : originalEmployee.name,
         age: data.age !== 0 ? data.age : originalEmployee.age,
-        email: data.email !== "" ? data.email : originalEmployee.email,
-        phone: data.phone !== "" ? data.phone : originalEmployee.phone,
-        address: data.address !== "" ? data.address : originalEmployee.address,
+        email: data.email.trim() !== "" ? data.email.trim() : originalEmployee.email,
+        phone: data.phone.trim() !== "" ? data.phone.trim() : originalEmployee.phone,
+        address: data.address.trim() !== "" ? data.address.trim() : originalEmployee.address,
+
       };
       await dispatch(editEmployee(employee));
       await dispatch(fetchUsers());
@@ -94,21 +84,20 @@ function EmployeeModal() {
     transform: "translate(-50%, -50%)",
     width: 480,
     bgcolor: "rgb(255, 255, 255)",
-    
+
     // border: "2px solid #000",
     boxShadow: 6,
     p: 4,
   };
 
   return (
-  <div>
+    <div>
       <Modal
         open={true}
         onClose={handleCloseModalEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        hideBackdrop={true} 
-      
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+        hideBackdrop={true}
       >
         <Box sx={style}>
           <Typography variant='h6' component='h2' mb={3}>
@@ -116,68 +105,90 @@ function EmployeeModal() {
           </Typography>
           <Typography display='flex' flexDirection='column'>
             <TextField
-              {...register("name", { required: modalType === "add" ? true : false})}
+              {...register("name", {
+                required: modalType === "add" ? true : false,
+              })}
+
               name='name'
               label='Employee Name'
               variant='outlined'
-              margin='normal'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            
+              margin='normal'           
+              value ={name}
+              onChange={(e) => setEmployee({...employee, name: e.target.value})}
+            
+
             />
             {errors.name && (
               <span style={{ color: "red", fontSize: "14px" }}>
-                Name is required
+                Name is required, please try again
               </span>
             )}
             <TextField
-              {...register("age", { pattern: /^[0-9]+$/ })}
+              {...register("age", { pattern: /^(1[8-9]|[2-9][0-9])$/})}
               name='age'
               label='Age'
               variant='outlined'
               margin='normal'
               type='number'
               value={age}
-              onChange={(e) => setAge(parseInt(e.target.value))}
+              onChange={(e) => setEmployee({...employee, age: e.target.value})}
             />
             {errors.age && (
               <span style={{ color: "red", fontSize: "14px" }}>
-                Age is invalid
+                Age is invalid, please try between 18-99 again
               </span>
             )}
             <TextField
-              {...register("email", { pattern: /^\S+@\S+$/i })}
+              {...register("email", { pattern: /^\S+@\S+$/i})}
               name='email'
               label='Email'
               variant='outlined'
               margin='normal'
               type='email'
+              InputLabelProps={{ shrink: true }}
+             
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmployee({...employee, email: e.target.value})}
             />
             {errors.email && (
               <span style={{ color: "red", fontSize: "14px" }}>
-                Email is invalid
+                Email is invalid, please try again
               </span>
             )}
             <TextField
-              {...register("phone")}
+              {...register("phone",{ pattern: /^(0|84)[0-9]{8,9}$/})
+              }
               name='phone'
               label='Phone'
               variant='outlined'
               margin='normal'
               type='tel'
+              InputLabelProps={{ shrink: true }}
+              placeholder='+(84)'
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setEmployee({...employee, phone: e.target.value})}
             />
+            {errors.phone && (
+              <span style={{ color: "red", fontSize: "14px" }}>
+                Phone is invalid, please try again
+              </span>
+            )}
             <TextField
-              {...register("address")}
+              {...register("address", 
+              { pattern: /^(?!\s*$).+/ })}
               name='address'
               label='Address'
               variant='outlined'
               margin='normal'
               multiline
+              InputLabelProps={{ shrink: true }}
+        
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={(e) => setEmployee({...employee, address: e.target.value})}
             />
             <Button
               variant='contained'
@@ -198,12 +209,12 @@ function EmployeeModal() {
           </Typography>
         </Box>
       </Modal>
-      <div className="overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 z-10
-      ">
-
-      </div>
-  </div>
+      <div
+        className='overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-10 z-10
+      '
+      ></div>
+    </div>
   );
 }
 
-export default EmployeeModal;
+export default memo(EmployeeModal);

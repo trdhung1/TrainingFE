@@ -1,25 +1,39 @@
-import { logout } from '../../store/authSlice';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store/store';
+
+import { useDispatch,useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { Link } from 'react-router-dom';
+import { openModalSignOut } from '../../store/modalSlice';
+import ModalConfirmSignout from '../../common/ModalConfirmSignout';
 
 
 function Header() {
 
   const dispatch = useDispatch<AppDispatch>();
+  const modalSignOutIsOpen = useSelector((state: RootState) => state.modal.modalSignOutIsOpen);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleOpenModalSignOut = () => {
+    dispatch(openModalSignOut());
   };
 
+ 
+
   return (
-    <header className="bg-gray-800 text-white flex justify-between items-center px-6 py-4 fixed top-0 left-0 w-full z-10">
-      <div className="text-xl font-bold">My App</div>
-      <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
-        onClick={handleLogout}
-      >
-        Sign Out
-      </button>
-    </header>
+   <div>
+      <header className="bg-gray-800 text-white flex justify-between items-center px-6 py-4 fixed top-0 left-0 w-full z-10">
+        <div className="text-xl font-bold">
+         <Link to="/">My App</Link>
+        
+          </div>
+        <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+          onClick={handleOpenModalSignOut}
+        >
+          Sign Out
+        </button>
+      </header>
+      {modalSignOutIsOpen && <ModalConfirmSignout />}
+      
+   </div>
+
   );
 };
 

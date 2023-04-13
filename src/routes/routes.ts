@@ -3,8 +3,13 @@ import EmployeePage from '../pages/EmployeePage';
 import NotFound from '../pages/NotFound';
 import AuthPage from '../pages/AuthPage';
 
-
-export const routes = [
+interface IRoute {
+    path: string;
+    component: any;
+    private: boolean;
+    title?: string;
+}
+export const routes:IRoute[] = [
     {
         path: '/',
         component: EmployeePage,

@@ -32,6 +32,7 @@ export const login = createAsyncThunk<string, ILoginPayload>(
   async ({ username, password }) => {
     const response = await authUrl.post<ILoginResponse>('/login',{email:username, password} );
     const token = response.data.token;
+    console.log(response.data)
     localStorage.setItem('token', token);
     return token;
   }

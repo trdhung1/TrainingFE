@@ -4,6 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface IModalState {
     modalEditIsOpen: boolean;
     modalDeleteIsOpen: boolean;
+    modalSignOutIsOpen: boolean;
+
     modalType?: string;
 }
 
@@ -11,6 +13,7 @@ export interface IModalState {
 const initialState: IModalState = {
   modalEditIsOpen: false,
   modalDeleteIsOpen: false,
+  modalSignOutIsOpen: false,
 };
 
 
@@ -32,6 +35,13 @@ const modalSlice = createSlice({
     closeModalDelete: (state) => {
       state.modalDeleteIsOpen = false;
     },
+    openModalSignOut: (state) => {
+      state.modalSignOutIsOpen = true;
+    },
+    closeModalSignOut: (state) => {
+      state.modalSignOutIsOpen = false;
+    }
+
   },
 });
 
@@ -42,6 +52,8 @@ export const {
   closeModalEdit,
   openModalDelete,
   closeModalDelete,
+  openModalSignOut,
+  closeModalSignOut,
 } = actions;
 
 export default reducer;

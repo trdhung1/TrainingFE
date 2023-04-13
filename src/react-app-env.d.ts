@@ -2,3 +2,5 @@
 
 declare module 'react-helmet';
 
+declare module 'intl-collator'
+
